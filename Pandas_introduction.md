@@ -198,7 +198,14 @@ df = pd.DataFrame(data, index=['a', 'b', 'c', 'd', 'e', 'f'])
 ```
 
 добавление колонки:
+```python
 df['total_time'] = df['time_per_page'] * df['pages'], где колонки 'time_per_page' и 'pages' уже существовали в таблице а 'total_time' - новая
-
+```
 добавить колонку можно также присвоив серию:
+```python
 df['balance'] = s1, 'balance' - новая колонка, s1 = серия
+```
+Создайте новую колонку c названием is_correct. Проверьте каждое значение из столбца total_time. Если значение меньше 100, то в колонку is_correct вставьте True, а иначе False.
+```python
+df['is_correct'] = df['total_time'] < 100
+```
