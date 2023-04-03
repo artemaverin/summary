@@ -191,3 +191,14 @@ print(df)
 ```python
 df = pd.DataFrame(data, columns=['visits', 'city', 'year'])
 ```
+
+При создании датафрейма можно задать свои собственные индексы (как и с серией)
+```python
+df = pd.DataFrame(data, index=['a', 'b', 'c', 'd', 'e', 'f'])
+```
+
+добавление колонки:
+df['total_time'] = df['time_per_page'] * df['pages'], где колонки 'time_per_page' и 'pages' уже существовали в таблице а 'total_time' - новая
+
+добавить колонку можно также присвоив серию:
+df['balance'] = s1, 'balance' - новая колонка, s1 = серия
