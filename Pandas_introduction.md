@@ -209,3 +209,126 @@ df['balance'] = s1, 'balance' - новая колонка, s1 = серия
 ```python
 df['is_correct'] = df['total_time'] < 100
 ```
+
+Доступ к целой колонке мы можем получить:
+- указав название колонки в квадратных скобках: df['название колонки']. Этот способ разрешает вытягивать колонки с пробелами и спец. символами.
+- через атрибут(свойство) датафрейма(если наименование столбца через пробел - выпадет ошибка)
+```python
+df['column_1']
+df['user_name']
+df['visits']
+# 2 способ
+df.column_1
+df.user_name
+df.visits
+```
+Для того чтобы создать новую колонку в квадратных скобках указываем название новой колонки и передаем либо одно значение либо массив. Если передаёте массив, то помните, что количество элементов должно быть равно количеству строк в датафрейме. Иначе датафрейм не сможет положить к себе одномерный массив (будет ошибка).
+```python
+data1 = {'user' : ['Ivan', 'Petr', 'Nikolay', 'Andrey'],
+            'time_per_page' :  [10, 30 , 15, np.nan],
+             'pages' : [7, 9, 12, 3]}
+df = pd.DataFrame(data1)
+df['words'] = [100, 33, 454, 934]
+print(df)
+Вывод:
+      user  time_per_page  pages  words
+0     Ivan           10.0      7    100
+1     Petr           30.0      9     33
+2  Nikolay           15.0     12    454
+3   Andrey            NaN      3    934
+```
+
+Также можно добавить и серию. Только индексы должны совпадать, иначе датафрейм ничего не добавит.
+
+помните, что количество элементов должно быть равно количеству строк в датафрейме. Иначе датафрейм не сможет положить к себе одномерный массив (будет ошибка).
+```python
+data1 = {'user' : ['Ivan', 'Petr', 'Nikolay', 'Andrey'],
+            'time_per_page' :  [10, 30 , 15, np.nan],
+             'pages' : [7, 9, 12, 3]}
+df = pd.DataFrame(data1)
+df['words'] = s1
+print(df)
+Вывод:
+      user  time_per_page  pages  words
+0     Ivan           10.0      7  130.0
+1     Petr           30.0      9    NaN
+2  Nikolay           15.0     12   23.0
+3   Andrey            NaN      3    NaN
+```
+
+атрибут **loc** датафрейма возвращает информацию о строке по индекску
+```python
+data1 = {'user' : ['Ivan', 'Petr', 'Nikolay', 'Andrey'],
+            'time_per_page' :  [10, 30 , 15, np.nan],
+             'pages' : [7, 9, 12, 3]}
+df = pd.DataFrame(data1)
+print(df.loc[1])
+Вывод:
+Int64Index([3], dtype='int64')
+user             Petr
+time_per_page    30.0
+pages               9
+Name: 1, dtype: object
+```
+
+При добавлении серии к датафрейму, нужно быть внимательным с индексами. Если у серии будут индексы, которых нет у датафрейма, то значения из серии просто не добавятся к датафрейму.
+```python
+s1 = pd.Series([130, 23], index=[0, 6])
+Вывод:
+0     Ivan           10.0      7  130.0
+1     Petr           30.0      9    NaN
+2  Nikolay           15.0     12    NaN
+3   Andrey            NaN      3    NaN
+```
+
+создание колонки с помощью **arange(n)**
+```python
+df['words'] = np.arange(4)
+Вывод:
+      user  time_per_page  pages  words
+0     Ivan           10.0      7      0
+1     Petr           30.0      9      1
+2  Nikolay           15.0     12      2
+3   Andrey            NaN      3      3
+```
+
+Есть несколько способов удалить колонку:
+- с помощью **del**:
+```java
+del df['pages']
+```
+- если надо удалить несколько столбцов или строк -  **drop** (но тут изменения идут не inplace, создается новый DataFrame)
+```python
+data = { 'city': ['Moscow', 'Moscow', 'Moscow', 'Kazan', 'Kazan', 'Kazan'],
+        'year':  [2022,      2021,     2020,     2022,    2021,    2020],
+        'visits': [1,      2,     3,     4,     5,     6]}
+
+df = pd.DataFrame(data)
+df['old_visits'] = df.visits
+df['old_visits_two'] = df.visits
+
+print(df)
+#      city  year  visits  old_visits  old_visits_two
+# 0  Moscow  2022       1           1               1
+# 1  Moscow  2021       2           2               2
+# 2  Moscow  2020       3           3               3
+# 3   Kazan  2022       4           4               4
+# 4   Kazan  2021       5           5               5
+# 5   Kazan  2020       6           6               6
+
+print(df.drop([0, 1, 5]))
+#      city  year  visits  old_visits  old_visits_two
+# 2  Moscow  2020       3           3               3
+# 3   Kazan  2022       4           4               4
+# 4   Kazan  2021       5           5               5
+
+
+print(df.drop(['old_visits', 'old_visits_two'], axis=1))
+#      city  year  visits
+# 0  Moscow  2022       1
+# 1  Moscow  2021       2
+# 2  Moscow  2020       3
+# 3   Kazan  2022       4
+# 4   Kazan  2021       5
+# 5   Kazan  2020       6
+```
