@@ -654,3 +654,26 @@ df.iloc[[0, 3], [0, 1]] = 111
 df.iat[0, 2] = 111
 df.at['a', 'history'] = 111
 ```
+Сложение датафреймов происходит по двум индексам поэлементно:
+```python
+df1 = pd.DataFrame(np.arange(9).reshape(3, 3), columns=list('bcd'), index=['Moscow', 'Kazan', 'Vladivostok'])
+             b  c  d
+Moscow       0  1  2
+Kazan        3  4  5
+Vladivostok  6  7  8
+
+df2 = pd.DataFrame(np.arange(12).reshape(4, 3), columns=list('bde'), index=['Yakutsk', 'Moscow', 'Kazan', 'Ufa'])
+         b   d   e
+Yakutsk  0   1   2
+Moscow   3   4   5
+Kazan    6   7   8
+Ufa      9  10  11
+
+print(df1 + df2)
+               b   c     d   e
+Kazan        9.0 NaN  12.0 NaN
+Moscow       3.0 NaN   6.0 NaN
+Ufa          NaN NaN   NaN NaN
+Vladivostok  NaN NaN   NaN NaN
+Yakutsk      NaN NaN   NaN NaN
+```
