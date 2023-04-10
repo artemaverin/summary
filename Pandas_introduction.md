@@ -758,3 +758,23 @@ Kazan        101.0 NaN NaN
 Vladivostok  201.0 NaN NaN
 Moscow       301.0 NaN NaN
 ```
+
+Примеры выше касались сложения df и series по столбцам, а если нужно по столбцам то у функции add, можно задать ось
+```python
+df3 = pd.DataFrame({'a':[100,200,300],
+                    'b': [1,2,3]}, index=['Kazan', 'Vladivostok','Moscow'])
+               a  b
+Kazan        100  1
+Vladivostok  200  2
+Moscow       300  3
+
+s2 = pd.Series([1, 2], index=['Kazan', 'Vladivostok'])
+Kazan          1
+Vladivostok    2
+dtype: int64
+
+print(df3.add(s2, axis=0))
+                 a    b
+Kazan        101.0  2.0
+Moscow         NaN  NaN
+Vladivostok  202.0  4.0
