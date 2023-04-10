@@ -717,7 +717,44 @@ Vladivostok   200.0
 Moscow        500.0
 
 #но если в df1 по индексу 'vladivostok' будет nan, то и в сумарном выражении будет nan
-поэтому можно воспользоваться функцией **fillna()**:
+поэтому можно воспользоваться функцией fillna():
 df1.fillna(0) + df2.fillna(0)
 
+```
+
+
+ДатаФрейм можно сложить с Серией, сложение будет осуществляться по колонкам
+```python
+df3 = pd.DataFrame({'a':[100,200,300],
+                    'b': [1,2,3]}, index=['Kazan', 'Vladivostok','Moscow'])
+               a  b
+Kazan        100  1
+Vladivostok  200  2
+Moscow       300  3
+
+s1 = pd.Series([1,2], index=['a','b'])
+a    1
+b    2
+dtype: int64
+
+print(df3 + s1)
+               a  b
+Kazan        101  3
+Vladivostok  201  4
+Moscow       301  5
+
+#нужно помнить что при такой серии:
+s1 = pd.Series([1], index=['a'])
+# получится так:
+                 a   b
+Kazan        101.0 NaN
+Vladivostok  201.0 NaN
+Moscow       301.0 NaN
+
+# еще пример:
+s1 = pd.Series([1, 2], index=['a', 'c'])
+                 a   b   c
+Kazan        101.0 NaN NaN
+Vladivostok  201.0 NaN NaN
+Moscow       301.0 NaN NaN
 ```
