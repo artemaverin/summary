@@ -778,3 +778,31 @@ print(df3.add(s2, axis=0))
 Kazan        101.0  2.0
 Moscow         NaN  NaN
 Vladivostok  202.0  4.0
+```
+#### Сортировка:
+* Сортировка Серий: где параметр *ascending* - сортировка по возрастанию, параметр inplace - возвращает и сохраняет отсоортированную серию в изначальную серию
+- сортировка Серии по индексам s.sort_index(ascending=True, inplace=False)
+- сортировка серии по колонкам s.sort_values(ascending=True, inplace=False)
+```python
+s5 = pd.Series([1,-2,3,-4], index = ['c','a','b','d'])
+c    1
+a   -2
+b    3
+d   -4
+dtype: int64
+
+s5.sort_index(ascending=False, inplace=True)
+d   -4
+c    1
+b    3
+a   -2
+dtype: int64
+# сортировка по значению
+
+s5.sort_values(inplace=True)
+d   -4
+a   -2
+c    1
+b    3
+dtype: int64
+```
