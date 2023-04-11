@@ -806,3 +806,30 @@ c    1
 b    3
 dtype: int64
 ```
+* Сортировка Датафрейма:
+
+- сортируются DF с помощью функции sort_index(axis=0, ascending=False), где через параметры мы выбираем нужную ось и порядок сортировки
+```python
+df = pd.DataFrame(np.arange(12).reshape(4, 3), columns=list('ebd'), index=['a', 'c', 'd', 'e'])
+   e   b   d
+a  0   1   2
+c  3   4   5
+d  6   7   8
+e  9  10  11
+
+# сортировка по строкам
+df.sort_index(inplace=True)
+   e   b   d
+a  0   1   2
+c  3   4   5
+d  6   7   8
+e  9  10  11
+
+# сортировка по колонкам
+df.sort_index(axis=1, inplace=True)
+    b   d  e
+a   1   2  0
+c   4   5  3
+d   7   8  6
+e  10  11  9
+```
