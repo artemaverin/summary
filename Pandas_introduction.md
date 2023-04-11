@@ -6,6 +6,7 @@
 4. [Функции reindex, drop и индексация в датафрейме](#функции-reindex-drop-и-индексация-в-датафрейме)
 5. [Операторы loc, iloc, at, iat. Сложение нескольких датафреймов](#операторы-loc-iloc-at-iat-сложение-нескольких-датафреймов)
 6. [Сложение датафреймов, сортировки, арифметика с пропусками](#сложение-датафреймов-сортировки-арифметика-с-пропусками)
+7. [Описательные статистики. Уникальные значения](#описательные-статистики-уникальные-значения)
 
 ### Series
 Numpy хорошо работает с числовыми данными - для этого он и создавался. Но на практике таблицы содержат не только числа, но и текст. 
@@ -853,3 +854,70 @@ b     Petr   40       9      250        8
 **na_position** = {‘first’, ‘last’}, по умолчанию ‘last’ - положение NaN по окончании сортировки - впереди или в конце\
 **key** - функция, применяемая к сортируемому полю непосредственно перед сортировкой\
 Например, key = lambda x: x.str.upper() - привести сортируемую строку к верхнему регистру\
+
+### Описательные статистики. Уникальные значения
+Непосредственно к датафрейму можно применять стандартные агрегатные функции: sum(), min(), max(), mean()\
+Для того чтобы задать ось по которой будет производится агрегация нужно указать в параметрах axis=\
+```python
+df = pd.DataFrame({'visits_2021' : [100, 200, 300, 50, 40],
+                   'visits_2020' : [90, 100, np.nan, 10, 80],
+                   'visits_2019' : [10, np.nan, 20, 16, 80]}, index=['Moscow', 'Kazan', 'Ufa', 'Yakutsk', 'Novosibirsk'])
+             visits_2021  visits_2020  visits_2019
+Moscow               100         90.0         10.0
+Kazan                200        100.0          NaN
+Ufa                  300          NaN         20.0
+Yakutsk               50         10.0         16.0
+Novosibirsk           40         80.0         80.0
+
+print(df.sum(axis=1))
+
+Moscow         200.0
+Kazan          300.0
+Ufa            320.0
+Yakutsk         76.0
+Novosibirsk    200.0
+dtype: float64
+```
+
+Чтобы включить в расчет nan , в параметрах соотвествующей функции прописываем skipna=False
+```python
+print(df.sum(axis=1, skipna=False))
+Moscow         200.0
+Kazan            NaN
+Ufa              NaN
+Yakutsk         76.0
+Novosibirsk    200.0
+dtype: float64
+```
+
+Если нужно учесть nan в виде нуля можно применить: **df.fillna(0).mean(axis=1, skipna=False)**
+```python
+print(df)
+             visits_2021  visits_2020  visits_2019
+Moscow               100         90.0         10.0
+Kazan                200        100.0          NaN
+Ufa                  300          NaN         20.0
+Yakutsk               50         10.0         16.0
+Novosibirsk           40         80.0         80.0
+print(df.mean(axis=1))
+Moscow          66.666667
+Kazan          150.000000
+Ufa            160.000000
+Yakutsk         25.333333
+Novosibirsk     66.666667
+dtype: float64
+print(df.mean(axis=1, skipna=False))
+Moscow         66.666667
+Kazan                NaN
+Ufa                  NaN
+Yakutsk        25.333333
+Novosibirsk    66.666667
+dtype: float64
+print(df.fillna(0).mean(axis=1, skipna=False))
+Moscow          66.666667
+Kazan          100.000000
+Ufa            106.666667
+Yakutsk         25.333333
+Novosibirsk     66.666667
+dtype: float64
+```
