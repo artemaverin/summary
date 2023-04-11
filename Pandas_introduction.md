@@ -808,7 +808,7 @@ dtype: int64
 ```
 * Сортировка Датафрейма:
 
-- сортируются DF с помощью функции sort_index(axis=0, ascending=False), где через параметры мы выбираем нужную ось и порядок сортировки
+- сортировка DF **по индексам** с помощью функции sort_index(axis=0, ascending=False), где через параметры мы выбираем нужную ось и порядок сортировки
 ```python
 df = pd.DataFrame(np.arange(12).reshape(4, 3), columns=list('ebd'), index=['a', 'c', 'd', 'e'])
    e   b   d
@@ -833,3 +833,23 @@ c   4   5  3
 d   7   8  6
 e  10  11  9
 ```
+- сортировка DF **по значениям** с помощью функции sort_value(ascending=False, by=, input=False). Через параметр **by** сортировать можно по одному и болле столбцам (list)
+
+```python
+df6 = pd.DataFrame(data, columns=['name', 'age', 'clicks', 'balance', 'history'], index=list('abcdefg'))
+df6.sort_values(by=['balance', 'history'], inplace=True)
+      name  age  clicks  balance  history
+g     Igor   19       2       10        1
+f     Ilya   20      18       15        2
+c  Nikolay   19      12       25        1
+a     Ivan   25       4       50        1
+d   Sergey   33       6      115        6
+e   Andrey   38       2      152        4
+b     Petr   40       9      250        8
+```
+При сортировке по нескольким столбцам можно отдельно задавать направление сортировки для каждого столбца, например, так: df.sort_values(by=['age', 'balance'], ascending=[False, True])\
+
+Для обеих функций сортировки могут применяться следующие интересные параметры:\
+**na_position** = {‘first’, ‘last’}, по умолчанию ‘last’ - положение NaN по окончании сортировки - впереди или в конце\
+**key** - функция, применяемая к сортируемому полю непосредственно перед сортировкой\
+Например, key = lambda x: x.str.upper() - привести сортируемую строку к верхнему регистру\
