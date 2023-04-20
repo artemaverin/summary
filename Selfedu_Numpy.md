@@ -1,4 +1,7 @@
-#конспект по Numpy с ютуб-канала selfedu https://www.youtube.com/watch?v=KaT3aPjjx1A&list=PLA0M1Bcd0w8zmegfAUfFMiACPKfdW4ifD&index=2 
+#конспект по Numpy с ютуб-канала selfedu https://www.youtube.com/watch?v=KaT3aPjjx1A&list=PLA0M1Bcd0w8zmegfAUfFMiACPKfdW4ifD&index=2
+
+=[КОНСПЕКТ НА САЙТЕ](https://proproprogs.ru/modules/numpy-ustanovka-i-pervoe-znakomstvo)=
+
 # Оглавление
 1. [Основные типы данных. Создание массивов функцией array()](#основные-типы-данных-создание-массивов-функцией-array)
 2. [Функции автозаполнения, создания матриц и числовых диапазонов](#функции-автозаполнения-создания-матриц-и-числовых-диапазонов)
@@ -56,3 +59,4 @@ m[0, 1]
 ```
 
 ### Функции автозаполнения, создания матриц и числовых диапазонов
+[Функции автозаполнения, создания матриц и числовых диапазонов](https://proproprogs.ru/modules/numpy-funkcii-avtozapolneniya-sozdaniya-matric-i-chislovyh-diapazonov)
