@@ -105,6 +105,8 @@ Java Development Kit (JDK) является одним из трех основ�
 
 ![img](https://github.com/johnivo/job4j/blob/master/interview_questions/src/main/resources/core_2.png)
 
+![img](https://user-images.githubusercontent.com/97846877/233628648-e08988e1-9eb1-4109-aedf-157dc2e53cab.png)
+
 + JVM — это часть платформы Java, которая исполняет программы;
 
 + JRE — это элемент Java, расположенный на диске, создающий и запускающий JVM;
