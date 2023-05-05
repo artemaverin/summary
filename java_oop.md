@@ -911,6 +911,8 @@ https://job4j.ru/profile/exercise/20/task-view/1030
 
 https://habr.com/ru/articles/342090/
 
+https://habr.com/ru/post/439648/
+
 ## 26. Что такое внутренний класс Типы внутренних классов?
 
 + **Статические**, пример StaticInnerClass:
@@ -968,7 +970,7 @@ OuterClass.StaticInnerClass staticInnerClass = new OuterClass.StaticInnerClass()
     ``` 
 
 https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html    
-https://habr.com/ru/post/439648/
+
 
 [к оглавлению](#OOP)
 
