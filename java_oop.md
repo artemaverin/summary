@@ -598,7 +598,8 @@ https://habr.com/ru/company/otus/blog/347900/
 
 + модификаторы доступа - специальные слова, которые определяют доступ к данным.
 
-![img](https://github.com/johnivo/job4j/blob/master/interview_questions/src/main/resources/oop_2.png)
+![Скриншот 17-05-2023 195831](https://github.com/artemaverin/summary/assets/97846877/e90b7dc9-e181-4665-89a6-3d80b1cf33b6)
+
 
 Например, модификатором доступа private скрываются поля объекта, 
 и при необходимости к ним разрешается подкотрольный доступ через геттеры и сеттеры.
