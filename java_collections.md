@@ -404,7 +404,7 @@ Map является интерфейсом, и в стандартном jdk с
 
 [к оглавлению](#collections-light)
 
-## Расскажите о методах map.keySet и map.entrySet? Что такое Entry?
+## Расскажите о методах keySet и entrySet? Что такое Entry?
 
 keySet() возвращает коллекцию java.util.Set состоящую только из ключей.
 
