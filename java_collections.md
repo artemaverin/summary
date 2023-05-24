@@ -192,21 +192,52 @@ https://javarush.com/groups/posts/2147-hashset-v-java
 [к оглавлению](#collections-light)
 
 ## Как задается порядок следования объектов в коллекции, как отсортировать коллекцию?
-Порядок задается либо естественным следованием элементов (Natural order),
-либо объектом, реализующим интерфейс сравнения Comparator.
-Если объекты коллекции поддерживают интерфейс Comparable, то через Collections.sort(collection);
-Если нет, то у коллекции вызвать метод sort и передать ему Comparator в качестве аргумента.
-через Comparable или Comparator.
+Порядок задается либо естественным следованием элементов (natural order), 
+либо объектом, реализующим интерфейс сравнения `Comparator`.
+
+Можно отсортировать с помощью интерфейса `Comparable` или интерфейса `Comparator`:
+ 
++ Если объекты коллекции поддерживают интерфейс `Comparable`, то через `Collections.sort(collection)`; 
+
++ Если нет, то у Collection вызвать метод `sort()` и передать ему `Comparator` в качестве аргумента `collection.sort(new MyComparator())`.
+Либо использовать метод `Collections.sort(collection, new MyComparator())`.
+
+Comparable - реализуется внутри класса. По сути, определяет обычный/естественный порядок сравнения объектов.
+
+Comparator - реализуется вне класса. Можно реализовать различные варианты сортировки, основанные на сравнении различных полей.
 
 [к оглавлению](#collections-light)
 
 ## Чем отличается Comparable от Comparator?
-+ **Comparable** - придает объектам какого то класса сравнимость
-(у каждого объекта есть метод compareTo, в который можно передать другой объект для сравнения).
-```Collections.sort(collection);```
-+ **Comparator** - треться сторона для сравнения
-(пишется отдельно и сравнивает два объекта данных ему.)
-```collection.sort(new Comparator{});```        
+**Comparable** - используется только для сравнения объектов класса, в котором данный интерфейс реализован. 
+Т.е. интерфейс `Comparable` определяет логику сравнения объектов определенного ссылочного типа внутри своей 
+реализации (по правилам разработчика). 
+`Collections.sort(collection);`
+
+**Comparator** - представляет отдельную реализацию и ее можно использовать многократно и с различными классами. 
+Т.е. интерфейс `Comparator` позволяет создавать объекты, которые будут управлять процессом сравнения: 
+1. при сортировках в методах `Collections.sort(collection, new MyComparator())`, `Arrays.sort(array, new MyComparator())` 
+или `collection.sort(new MyComparator())`
+2. при управлении порядком в отсортированных множествах `TreeSet` или отсортированных картах `TreeMap`,
+ например `new TreeSet<T> (new MyComparator())`.
+
+**Разница:**
+
++ `Comparable` определяет логику сравнения объектов определенного ссылочного типа внутри своей реализации 
+и, если нет доступа к исходникам, ее невозможно изменить. 
+
++ `Comparator` позволает определить логику сравнения объектов определенного ссылочного типа вне реализации 
+этого типа и эту логику можно в любой момент подменить.
+
+*`Comparable` используется для `natural ordering`, а `Comparator` для `total ordering`.*
+
+**Примеры:**
+
+http://java-online.ru/blog-comparator.xhtml
+
+https://netjs.blogspot.com/2015/10/difference-between-comparable-and-comparator-java.html
+
+https://www.programcreek.com/2011/12/examples-to-demonstrate-comparable-vs-comparator-in-java/
 
 [к оглавлению](#collections-light)
 
