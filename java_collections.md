@@ -131,7 +131,7 @@ Object[] toArray() – метод возвращает массив, котор�
 + **Map** - (от Collection он не наследуется) Значения хранятся как пара - ключ-значение. и по ключу получаем значение.
 у мапы нету итератора
 
-![imageTaskSource (1)]([https://github.com/artemaverin/summary/assets/97846877/f7e344c5-cace-435a-9893-d6637584916c](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https:%2F%2Fblog.kakaocdn.net%2Fdn%2FlkxJ0%2FbtqPRAqajRU%2FZC2AOKKkiwQkBkYskMsNVk%2Fimg.png))
+![imageTaskSource (1)](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https:%2F%2Fblog.kakaocdn.net%2Fdn%2FlkxJ0%2FbtqPRAqajRU%2FZC2AOKKkiwQkBkYskMsNVk%2Fimg.png)
 
 [к оглавлению](#collections-light)
 
