@@ -14,6 +14,7 @@
 + [Что такое сортировка по принципу Natural Order?](#Что-такое-сортировка-по-принципу-Natural-Order)
 + [Что такое equals и hashcode?](#Что-такое-equals-и-hashcode)
 + [Какие есть способы перебора всех элементов List?](#Какие-есть-способы-перебора-всех-элементов-List)
++ [Расскажите о методах Map](#Расскажите о методах Map)
 + [Как реализован цикл foreach?](#Как-реализован-цикл-foreach)
 + [В чем разница между Iterator и ListIterator?](#В-чем-разница-между-Iterator-и-ListIterator)
 + [Как происходит удаление элементов из ArrayList?](#Как-происходит-удаление-элементов-из-ArrayList)
@@ -273,11 +274,94 @@ https://www.programcreek.com/2011/12/examples-to-demonstrate-comparable-vs-compa
 [к оглавлению](#collections-light)
 
 ## Какие есть способы перебора всех элементов List?
-+ через index (fori, while)
-+ через iterator (while)
-+ foreach
+Есть список стран, его нужно перебрать
+```java
+List<String> countries = Arrays.asList("Russia", "Panama", "Australia");
+```
++ **циклы** `for`, `while`, `foreach`
 
-[к оглавлению](#collections-light)
+```java
+for (int i = 0; i < countries.size(); i++) {
+    System.out.println(countries.get(i));
+}
+```
+
+```java
+int i = 0;
+while (i < countries.size()){
+    System.out.println(countries.get(i++));
+}
+```
+
+```java
+for (String country : countries) {
+    System.out.println(country);
+}    
+```
+
++ **итераторы** `Iterator`, `ListIterator`
+```java
+Iterator<String> countriesIterator = countries.iterator();
+while(countriesIterator.hasNext()) {
+    System.out.println(countriesIterator.next());
+}
+```
+
+```java
+ListIterator<String> listIterator = countries.listIterator();
+//в прямом порядке
+while(listIterator.hasNext()) {
+    System.out.println(listIterator.next());
+}
+//в обратном порядке
+while(listIterator.hasPrevious()) {
+    System.out.println(listIterator.previous());
+}    
+```
+Если вызвать метод `next()` итератора, указывающего на последний элемент в коллекции, 
+то возникнет исключение `NoSuchElementException`. Следует это помнить и использовать метод `hasNext()` перед вызовом `next()`.
+
++ **функция `forEach()`** 
+    
+    + **`Iterable.forEach()`** можно использовать для итерации по элементам списка начиная с Java 8. 
+Этот метод определен в интерфейсе Iterable и может принимать лямбда-выражения в качестве параметра.
+    ```java
+    countries.forEach(System.out::println);
+    ```
+    
+    + **`Stream.forEach()`** Мы также можем преобразовать коллекцию значений в поток и получить доступ 
+    к таким операциям, как `forEach()`, `map()`, или `filter()`.
+    ```java
+    countries.stream().forEach(
+        (c) -> System.out.println(c)
+    );
+    ```
+    
+https://www.codeflow.site/ru/article/java-iterate-list    
+
+[к оглавлению](#collections-lite)
+
+## Расскажите о методах Map
+
+CRUD
++ V put(K k, V v): помещает в коллекцию новый объект с ключом k и значением v. Если в коллекции уже есть объект с подобным ключом, то он перезаписывается. После добавления возвращает предыдущее значение для ключа k, если он уже был в коллекции. Если же ключа еще не было в коллекции, то возвращается значение null
++ V get(Object k): возвращает значение объекта, ключ которого равен k. Если такого элемента не окажется, то возвращается значение null
++ Set< K> keySet(): возвращает набор всех ключей отображения
++ Set<Map.Entry<K, V>> entrySet(): возвращает набор элементов коллекции. Все элементы представляют объект Map.Entry
++ V remove(Object k): удаляет объект с ключом k
+
+Некоторый другие:
++ void clear(): очищает коллекцию
++ boolean containsKey(Object k): возвращает true, если коллекция содержит ключ k
++ boolean containsValue(Object v): возвращает true, если коллекция содержит значение v
++ boolean isEmpty: возвращает true, если коллекция пуста
++ V putIfAbsent(K k, V v): помещает в коллекцию новый объект с ключом k и значением v, если в коллекции еще нет элемента с подобным ключом.
++ void putAll(Map< ? extends K, ? extends V> map): добавляет в коллекцию все объекты из отображения map
++ int size(): возвращает количество элементов коллекции
+	
+https://job4j.ru/profile/exercise/29/task-view/220
+
+[к оглавлению](#collections-lite)
 
 ## Как реализован цикл foreach?
 Через iterator (Если коллекция экстендится от iterable, то мы можем перебирать элементы этой коллекции форичем)
