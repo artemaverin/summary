@@ -444,11 +444,11 @@ for (Iterator<E> i = someIterable.iterator(); i.hasNext();) {
 
 + `Iterator` может использоваться для перебора элементов коллекций `Set`, `List` и `Map`. `ListIterator` может быть использован только для перебора элементов коллекции `List`
 
-+ Основное различие между ```Iterator``` а также ```ListIteratorv заключается в том, как они пересекают Коллекцию. С ```Iterator```, мы можем двигаться только вперед, используя его hasNext() а также next() метод в то время как с ```ListIterator```, мы можем перемещаться по списку в любом направлении. ```ListIterator``` обеспечивает hasNext() а также next() метод движения в прямом направлении и hasPrevious() а также previous() метод движения в обратном направлении.
++ Основное различие между `Iterator` а также `ListIteratorv` заключается в том, как они пересекают Коллекцию. С ```Iterator```, мы можем двигаться только вперед, используя его hasNext() а также next() метод в то время как с `ListIterator` мы можем перемещаться по списку в любом направлении. `ListIterator` обеспечивает hasNext() а также next() метод движения в прямом направлении и hasPrevious() а также previous() метод движения в обратном направлении.
 
-+ The ```ListIterator``` позволяет нам изменять список во время итерации, используя его set() метод. Это невозможно с помощью итератора.
++ The `ListIterator` позволяет нам изменять список во время итерации, используя его set() метод. Это невозможно с помощью итератора.
 
-+ С использованием ```Iterator```, мы не можем получить текущую позицию итератора в списке. С другой стороны, ```ListIterator``` может возвращать индекс следующего или предыдущего элемента при обходе списка, используя его nextIndex() а также previousIndex(), соответственно.
++ С использованием `Iterator` мы не можем получить текущую позицию итератора в списке. С другой стороны, `ListIterator` может возвращать индекс следующего или предыдущего элемента при обходе списка, используя его nextIndex() а также previousIndex(), соответственно.
 
 + Мы можем получить следующий элемент в списке, обходя его с помощью итератора, используя его next() метод. С ```ListIterator``` является двунаправленным, мы можем получить как предыдущий, так и следующий элементы в любой момент времени, используя его previous() а также next() метод соответственно.
 
@@ -461,12 +461,28 @@ for (Iterator<E> i = someIterable.iterator(); i.hasNext();) {
 ## Как происходит удаление элементов из ArrayList?
 Перекидывание элемента в конец массива путем смещения всех последующих элементов, а затем уменьшение поля size на 1.
 
+Находится заданный элемент. 
+Далее сдвигаются влево на один элемент все последующие (с большим индексом) элементы, а значение `size` уменьшается на 1.
+
+Непосредственно под капотом: 
+```java
+System.arraycopy(es, i + 1, es, i, newSize - i)
+es[size = newSize] = null;
+```
+**Ответ 2**
+
+При удалении произвольного элемента из списка, все элементы находящиеся «правее» смещаются на одну ячейку влево 
+и реальный размер массива (его емкость, capacity) не изменяется никак.
+
 [к оглавлению](#collections-light)
 
 ## Как происходит удаление элементов из LinkedList?
-Замена ссылок prev и next у соседних элементов.
+просиходит перелинковка : Замена ссылок prev и next у соседних элементов. 
 
 [к оглавлению](#collections-light)
+
+
+## Что такое автоупаковка и распаковка? Зачем они нужны?
 	
 ## Расскажите иерархию интерфейсов Collection framework
 + i Collections extends Iterable.
@@ -498,14 +514,14 @@ for (Iterator<E> i = someIterable.iterator(); i.hasNext();) {
 + !int size()
 + !boolean isEmpty()
 + !boolean contains(Object o)
-+ !Iterator<E> iterator()
++ !Iterator < E> iterator()
 + !Object[] toArray()
 + !boolean add(E e)
 + !boolean remove(Object o)
-+ boolean containsAll(Collection<?> c)
-+ boolean addAll(Collection<? extends E> c)
-+ boolean removeAll(Collection<?> c)
-+ boolean retainAll(Collection<?> c)
++ boolean containsAll(Collection< ?> c)
++ boolean addAll(Collection< ? extends E> c)
++ boolean removeAll(Collection< ?> c)
++ boolean retainAll(Collection< ?> c)
 + !void clear()
 + boolean equals(Object o)
 + int hashCode()
