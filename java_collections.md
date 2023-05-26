@@ -387,7 +387,7 @@ Map является интерфейсом, и в стандартном jdk с
 **WeakHashMap**
 Основан на хэш-таблицах, реализует интерфейс Map с так называемыми слабыми ключами (weak keys). Пара в данной коллекции автоматически будет удалена когда ссылка на ключ больше нигде не используется. Другими словами, нахождение объекта представленного ключем в данной коллекции не блокирует сборщик мусора от зачистки. После того как ключ будет зачищен вся пара будет удалена из коллекции.
 
-![](https://www.freetimelearning.com/java/uploadingimages/map-interface.png)
+![](https://img-blog.csdn.net/20181022093927752?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pqcHAyNTgwMzY5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 [к оглавлению](#collections-light)
 
