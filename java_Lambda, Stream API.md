@@ -42,7 +42,11 @@
 
 [21. Что делает метод findFirst?](#21-Что-делает-метод-findFirst)
 
-[16. Что делает метод reduce?](#16-Что-делает-метод-reduce)
+[22. Что делает метод reduce?](#22-Что-делает-метод-reduce)
+
+[23. Что делают методы min и max?](#23-Что-делают-методы-min-и-max)
+
+[24. Что делают методы count, sum, average?](#24-Что-делают-методы-count-sum-average)
 
 [18. Возможно ли прервать выполнение потока по аналогии с break?](#18-Возможно-ли-прервать-выполнение-потока-по-аналогии-с-break)
 
@@ -536,7 +540,7 @@ https://job4j.ru/profile/exercise/3/task-view/255
 
 [к оглавлению](#FP-Lambda-Stream-API)
 
-## 16. Что делает метод reduce?
+## 22. Что делает метод reduce?
 
 `reduce` позволяет выполнять агрегатные функции на всей коллекцией и возвращать один результат.
 Т.е. позволяет преобразовать все элементы стрима в один объект. Например, посчитать сумму всех элементов.
@@ -547,19 +551,19 @@ https://job4j.ru/profile/exercise/3/task-view/255
 
 Метод `reduce` выполняет терминальные операции сведения, возвращая некоторое значение - результат операции.
 Он имеет следующие формы:
-1. `Optional<T> reduce(BinaryOperator<T> accumulator)`
-2. `T reduce(T identity, BinaryOperator<T> accumulator)`
-3. `U reduce(U identity, BiFunction<U,? super T,U> accumulator, BinaryOperator<U> combiner)`
+1. `Optional< T> reduce(BinaryOperator< T> accumulator)`
+2. `T reduce(T identity, BinaryOperator< T> accumulator)`
+3. `U reduce(U identity, BiFunction<U,? super T,U> accumulator, BinaryOperator< U> combiner)`
 
 Первая форма возвращает результат в виде объекта `Optional<T>`. Например, вычислим произведение набора чисел:
 
 ```java
-    Stream<Integer> numbersStream = Stream.of(1,2,3,4,5,6);
-    Optional<Integer> result = numbersStream.reduce((x,y)->x*y);
+    Stream< Integer> numbersStream = Stream.of(1,2,3,4,5,6);
+    Optional< Integer> result = numbersStream.reduce((x,y)->x*y);
     System.out.println(result.get()); // 720
 ```
 
-Объект `BinaryOperator<T>` представляет функцию, которая принимает два элемента и выполняет над ними некоторую операцию,
+Объект `BinaryOperator< T>` представляет функцию, которая принимает два элемента и выполняет над ними некоторую операцию,
 возвращая результат. При этом метод reduce сохраняет результат и затем опять же применяет к этому результату
 и следующему элементу в наборе бинарную операцию.
 
@@ -568,13 +572,13 @@ https://job4j.ru/profile/exercise/3/task-view/255
 Этот параметр хранит значение, с которого будет начинаться цепочка бинарных операций. Например:
 
 ```java
-    Stream<String> wordsStream = Stream.of("мама", "мыла", "раму");
-    String sentence = wordsStream.reduce("Результат:", (x,y)->x + " " + y);
-    System.out.println(sentence); // Результат: мама мыла раму
+    List<Integer> nums = Arrays.asList(1, 2, 3, 4);
+        int sum = nums.stream() 
+                .reduce(2, (a, b) -> a + b);
+        System.out.println(sum);
 ```
 
-Допустим мы хотим найти сумму цен тех телефонов, у которых цена меньше определенного значения.
-Для этого используем третью версию метода `reduce`:
+- reduce (U identity, BiFunction< U, ? super T,U> accumulator, BinaryOperator< U> combiner) - расширенная версия второй формы. accumulator здесь позволяет выполнить промежуточное действие над элементами потока, после чего к ним будет применена агрегатная операция combiner. Данная форма метода аналогична комбинации методов map() и второй формы reduce(), то есть если нам нужно вернуть тип данных, отличный от входящего, то нужно использовать эту версию метода reduce().
 
 ```java
     Stream<Phone> phoneStream = Stream.of(new Phone("iPhone 6 S", 54000),
@@ -592,7 +596,73 @@ https://job4j.ru/profile/exercise/3/task-view/255
     System.out.println(sum); // 117000
 ```
 
+Важно! Полноценная работа этой версии метода reduce(), а точнее работа combiner раскрывается только при выполнении вычислений потока (stream) в многопоточной среде.
+
 [к оглавлению](#FP-Lambda-Stream-API)
+
+## 23. Что делают методы min и max?
+
+Методы min()/max() - агрегатные метод потоков. эти методы являются терминальными и сводят все элементы потока к одному значению.
+
+- min() - возвращает минимальный элемент потока. Наименьший элемент определяется с помощью компаратора, который передается в параметр метода.
+
+```java
+public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(4, 5, 1, 3, 2);
+        Optional<Integer> minEl = list.stream() 
+                .min(Comparator.naturalOrder()); 
+        System.out.println(minEl.get()); 
+    }
+```
+
+Компаратор нужно передавать, чтобы метод понимал по какому принципу сравнивать объекты. Если метод min() применяется к потоку примитивных чисел, то можно использовать его без компаратора+
+
+- max() - возвращает максимальный элемент потока. Наибольший элемент определяется с помощью компаратора, который передается в параметр метода. Работает аналогично методу min().
+
+## 24. Что делают методы count, sum, average?
+
+ - **count()** - возвращает число элементов в потоке.
+ 
+ ```java
+ List<Integer> nums = Arrays.asList(1, 2, 3, 4, 5);
+        long sum = nums.stream() 
+                .filter(el -> el % 2 == 0) 
+                .count(); 
+        System.out.println(sum); 
+ ```
+ 
+ - **sum()** - суммирует все элементы потока. Применяется только к числовым потокам.
+
+```java
+List<Person> people = Arrays.asList(
+                new Person("Михаил", 35),
+                new Person("Ольга", 26),
+                new Person("Антон", 20),
+                new Person("Виктор", 16),
+                new Person("Анна", 29)
+        );
+        int sum = people.stream() 
+                .mapToInt(Person::getAge) 
+                .sum(); 
+        System.out.println(sum);
+```
+
+- average() - возвращает среднее арифметическое всех элементов потока. Применяется только к числовым потокам. Метод возвращает OptionalDouble (Значение double, обернутое в Optional). 
+
+```java
+List<Person> people = Arrays.asList(
+                new Person("Михаил", 35),
+                new Person("Ольга", 26),
+                new Person("Антон", 20),
+                new Person("Виктор", 16),
+                new Person("Анна", 29)
+        );
+        OptionalDouble average = people.stream() 
+                .mapToInt(Person::getAge) 
+                .average(); 
+        double avg = average.getAsDouble(); 
+        System.out.println(avg);
+```
 
 ## 18. Возможно ли прервать выполнение потока по аналогии с break?
 
