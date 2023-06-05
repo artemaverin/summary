@@ -206,13 +206,13 @@ System.out.println(g.apply(f,7));
 
 ## 5. Какие функциональные интерфейсы из пакета javautilfunction поддерживают функции высшего порядка?
 
-Predicate метод Predicate and(Predicate other)
+Predicate метод Predicate and(Predicate other) - and(Predicate< ? super T> other)
 
-Consumer Метод Consumer andThen(Consumer after)
+Consumer Метод Consumer andThen(Consumer after) - default Consumer< T> andThen(Consumer< ? super T> after)
 
-Function Метод Function compose(Function before)
+Function Метод Function compose(Function before) default < V> Function< V,R> compose(Function< ? super V,? extends T> before)
 
-Supplier метод Supplier and(Supplier other)
+Supplier метод Supplier and(Supplier other) ???
 
 Также метод в Java может возвращать лямбда-выражение.
 
