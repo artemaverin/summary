@@ -470,6 +470,12 @@ static final class StreamBuilderImpl< T>
 
 ## 16. Что такое отложенный выполнение lamdba?
 
+In practice, they mean essentially the same thing. However, it's preferable to use the term deferred.
+
+**Lazy** means "don't do the work until you absolutely have to."
+
+**Deferred** means "don't compute the result until the caller actually uses it."
+
 Одним из ключевых моментов в использовании лямбд является отложенное выполнение (deferred execution). То есть мы определяем в одном месте программы лямбда-выражение и затем можем его вызывать при необходимости неопределенное количество раз в различных частях программы. Отложенное выполнение может потребоваться, к примеру, в следующих случаях:
 
 - Выполнение кода отдельном потоке
