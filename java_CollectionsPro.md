@@ -8,9 +8,11 @@
 
 [3. Что такое bounded wild cards?](#3-Что-такое-bounded-wild-cards)
 
-[3. Где хранится информация про Generics?](#3-Где-хранится-информация-про-Generics)
+[4. Что такое unbounded wild cards?](#4-Что-такое-unbounded-wild-cards)
 
-[4. Как можно получить тип Generics?](#4-Как-можно-получить-тип-Generics)
+[5. Где хранится информация про Generics?](#5-Где-хранится-информация-про-Generics)
+
+[6. Как можно получить тип Generics?](#6-Как-можно-получить-тип-Generics)
 
 [5. Что такое итератор?](#5-Что-такое-итератор)
 
@@ -236,17 +238,43 @@ List<? super Integer> ints = nums;
 
 >Контравариантность — это обращение иерархии исходных типов на противоположную в производных типах. Например, если Кошка — это подтип Животные, то Множество<Животные> — это подтип Множество<Кошки>. Следовательно,  с учетом принципа подстановки можно выполнить такое присваивание: `Множество<Кошки> = Множество<Животные>`
 
-## 3. Где хранится информация про Generics?
+## 5. Где хранится информация про Generics?
 
 Только в исходном коде до момента компиляции.
 
 [к оглавлению](#Collections-Pro)
 
-## 4. Как можно получить тип Generics?
+## 6. Как можно получить тип Generics?
 
 ```java
 .getGenericSuperclass()
 Class<T> t = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+```
+
+Существует только одна ситуация, когда универсальный тип доступен во время выполнения - это когда универсальный тип является частью сигнатуры класса подобным образом:
+
+```java
+package ru.job4j.generics;
+
+import java.util.ArrayList;
+
+public class FloatList extends ArrayList<Float> {
+   
+}
+```
+
+теперь мы можем узнать что класс ArrayList (а, соответственно, и класс FloatList) был параметризован классом Float следующим образом:
+
+```java
+public static void main(String[] args) {
+    ArrayList<Float> listOfNumbers = new FloatList();
+    
+    Class actual = listOfNumbers.getClass();
+    ParameterizedType type = (ParameterizedType) actual.getGenericSuperclass();
+    System.out.println(type);
+    Class parameter = (Class) type.getActualTypeArguments()[0];
+    System.out.println(parameter);
+}
 ```
 
 [к оглавлению](#Collections-Pro)
