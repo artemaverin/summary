@@ -242,6 +242,12 @@ List<? super Integer> ints = nums;
 
 Только в исходном коде до момента компиляции.
 
+в информации о классе, который явно определяет значение параметра в его generic-родителе.
+
+```java
+public class FloatList extends ArrayList<Float>{}
+```
+
 [к оглавлению](#Collections-Pro)
 
 ## 6. Как можно получить тип Generics?
