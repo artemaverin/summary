@@ -248,6 +248,8 @@ List<? super Integer> ints = nums;
 public class FloatList extends ArrayList<Float>{}
 ```
 
+https://habr.com/ru/articles/66593/
+
 [к оглавлению](#Collections-Pro)
 
 ## 6. Как можно получить тип Generics?
