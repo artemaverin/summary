@@ -762,7 +762,7 @@ https://job4j.ru/profile/exercise/4/task/810/356795
 
 [к оглавлению](#Collections-Pro)
 
-## 13. Расскажите про методы Object hashCode и equals?
+## 15. Расскажите про методы Object hashCode и equals?
 
 Метод `hashCode()` используется для числового представления объекта, метод `equals()` для сравнения двух объектов.
 При переопределении метода `equals()` всегда переопределяют `hashCode()`.
@@ -776,12 +776,53 @@ https://job4j.ru/profile/exercise/4/task/810/356795
 3. Проверяем что объекты от одного класса.
 4. Не равны ли `hashCode`.
 5. Не равны состояния полей.
+
+```java
+@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName);
+    }
+``` 
     
 **Метод `hashCode()` переопределяется так:**
 1. Простое нечетное число (31 популярно).
-2. Умножаем результат на другое простое нечетное число (популярно 17).
+2. Умножаем результат на другое простое нечетное число (популярно 17/1).
 прибавляем хэш-код поля, которое относится к бизнес логике.
 3. Повторяем пункт 2 пока не кончатся поля которые относятся к бизнес-логике.
+
+```java
+public static int hashCode(Object a[]) {
+        if (a == null)
+            return 0;
+
+        int result = 1;
+
+        for (Object element : a)
+            result = 31 * result + (element == null ? 0 : element.hashCode());
+
+        return result;
+    }
+```
+
+Методы, необходимые для определения равенства объектов. 
+
+`hashcode` возвращает число, являющееся уникальным идентификатором объекта. 
+Это алгоритм, который позволяет множество значений объектов сузить до какого-то натурального количества.
+ 
+`equals` сравнивает объекты по значению их полей. 
+
+Главные правила для любых реализаций этих двух методов, которые нужно обязательно соблюдать, запомнить как аксиому:
+
+1). Если x.equals(y) == true, то обязательно hashcode(x) == hashcode(y)
+
+2) Если hashcode(x) == hashcode(y), то не обязательно x.equals(y) == true
+
+Сперва производится сравнение по хешу, чтобы понять, совпадают ли объекты, а только после подключается equals , чтобы определить, совпадают ли значения полей объекта.
+
+Объекты всех коллекций в названии которых есть *Hash...* должны иметь `hashcode` и `equals`.
 
 https://javarush.com/groups/posts/2496-podrobnihy-razbor-klassa-hashmap
 
