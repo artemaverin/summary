@@ -292,6 +292,8 @@ public static void main(String[] args) {
     Class parameter = (Class) type.getActualTypeArguments()[0];
     System.out.println(parameter);
 }
+
+Таким образом, теперь мы можем узнать актуальный параметр generic-класса, если этот параметр был задан явным образом (т.е. параметр определен внутри секции extends одного из наследников).
 ```
 
 [к оглавлению](#Collections-Pro)
