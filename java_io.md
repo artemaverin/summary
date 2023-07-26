@@ -953,6 +953,36 @@ but you can workaround with the following two alternatives :
 
 ## 21. Как управлять атрибутами файла?
 
+https://job4j.ru/profile/exercise/45/task-view/1021
+
+Файлы имеют атрибуты, например, время создания, время последнего изменения, каталог, владелец, права доступа и т.д. Атрибуты также называют метаданными файла. У разных файловых систем имеются разные атрибуты файлов. Атрибуты файлов в Java представлены в пакете java.nio.file.attribute в виде иерархии интерфейсов с учётом особенностей разных файловых систем.
+
+Во главе этой иерархии находится интерфейс BasicFileAttributeView. Данный интерфейс инкапсулирует атрибуты, применяющиеся во множестве файловых систем. 
+
+У интерфейса BasicFileAttributeView есть 2 наследника:
+
+- Интерфейс DosFileAttributeView - описывает атрибуты, связанные с файловой системой FAT.
+- Интерфейс PosixFileAttributeView - описывает атрибуты, определенные по стандартам POSIX (Portable Operating System Interface — переносимый интерфейс операционных систем). POSIX - это набор стандартов, описывающих интерфейсы между ОС и прикладной программой (API), библиотеку языка C и набор приложений и их интерфейсов. Стандарт создан для обеспечения совместимости UNIX-подобных ОС и переносимости прикладных программ на уровне исходного кода. Может быть использован и для других типов ОС.
+
+Эти и другие интерфейсы, которые содержатся в пакете java.nio.file.attribute, имеют очень узкое применение, поэтому в этом уроке мы рассмотрим только шире применяющийся интерфейс BasicFileAttributeView (BasicFileAttribute).
+
+В данном примере создаётся файл в корне проекта, создается представление из атрибутов этого файла и получаются сами атрибуты:
+```java
+Path file = Path.of("Attributes.txt");
+Files.createFile(file);
+BasicFileAttributeView attrView = Files.getFileAttributeView(file, BasicFileAttributeView.class); //В следующей строке объект BasicFileAttributeView получается с помощью метода Files.getFileAttributeView()
+BasicFileAttributes attributes = attrView.readAttributes(); //BasicFileAttributeView содержит представление атрибутов файла. Сами атрибуты получаются методом readAttributes()
+```
+
+Метод readAttributes() возвращает тип BasicFileAttributes. Реализации BasicFileAttributeView и BasicFileAttributes отличаются тем, что BasicFileAttributeView - это представление атрибутов файла, включающее и обязательные, и необязательные методы атрибутов файла, а с помощью метода readAttributes() атрибуты извлекаются из файловой системы в BasicFileAttributes, но в этом типе доступны будут только обязательные (основные) методы. Необязательные методы нужно вызывать через объект BasicFileAttributeView.
+
+Некоторые методы работы с атрибутами файла в целях упрощения работы с ними вынесены в класс Files и объявлены статическими. Например, чтобы получить атрибуты файла, не обязательно получать представление требуемой группы атрибутов, можно использовать более быстрый вариант с помощью вызова статического метода Files.readAttributes():
+
+```java
+Path file = ...
+BasicFileAttributes attrs = Files.readAttributes(file, BasicFileAttributes.class);
+```
+
 **Базовые атрибуты** (доступны во всех ОС):
 
 + File type
