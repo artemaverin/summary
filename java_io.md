@@ -829,6 +829,49 @@ String[] list = target.list();
 метод listFiles() возвращает массив объектов типа File с инкапсулированными путями расположения этих объектов в файловой системе, содержащихся в директории files
 
 2. С помощью встроенного механизма FileVisitor  метода класса Files - public static Path walkFileTree(Path start, FileVisitor<? super Path> visitor) throws IOException
+
+```java
+public class PrintFiles implements FileVisitor<Path> {
+
+
+    @Override
+    public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+        return CONTINUE;
+    }
+
+    @Override
+    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+        System.out.println(file.toAbsolutePath());
+        return CONTINUE;
+    }
+
+    @Override
+    public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
+        return CONTINUE;
+    }
+
+    @Override
+    public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+        return CONTINUE;
+    }
+}
+```
+Интерфейс FileVisitor имеет 4 метода. Нас будет интересовать только visitFile. Java последовательно передает в него файлы, а программист их обрабатывает.
+
+```java
+public class Search {
+    public static void main(String[] args) throws IOException {
+        Path start = Paths.get(".");
+        Files.walkFileTree(start, new PrintFiles());
+    }
+}
+```
+2.1. Существует еще варинт  с SimpleFileVisitor
+_SimpleFileVisitor_ уже реализует FileVisitor, переопределяя все методы только с указанием на дальнейший обход CONTINUE.
+
+Это означает, что унаследовавшись от него мы можем переопределить только нужный нам метод.
+
+https://habr.com/ru/articles/437694/
  
 [к оглавлению](#IO)
  
