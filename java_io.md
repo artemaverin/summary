@@ -756,7 +756,7 @@ https://job4j.ru/profile/exercise/45/task-view/1016
 [к оглавлению](#IO)
 
 ## 17. Как получить список файлов?
-
+**Ответ № 1**
 + Без учета подпапок
 ```java
 File file = new File("dir");
@@ -809,6 +809,26 @@ Files.walkFileTree(directory, Collections.emptySet(), 1, new SimpleFileVisitor<P
     }
 });
 ```
+
+**Ответ № 2**
+
+1. С помощью методов `new File().list()` и `new File().listFiles()` вызываемых у объекта класса **File**
+```java
+File target = new File("src/main/java/ru/job4j/io/files");
+String[] list = target.list(); 
+        for (String f : list) {
+            System.out.println(f);
+        }
+        File[] listFiles = target.listFiles(); 
+        for (File f : listFiles) {
+            System.out.println(f);
+        }
+```
+
+метод list() возвращает массив строк с именами файлов и директорий, содержащихся в директории files
+метод listFiles() возвращает массив объектов типа File с инкапсулированными путями расположения этих объектов в файловой системе, содержащихся в директории files
+
+2. С помощью встроенного механизма FileVisitor  метода класса Files - public static Path walkFileTree(Path start, FileVisitor<? super Path> visitor) throws IOException
  
 [к оглавлению](#IO)
  
