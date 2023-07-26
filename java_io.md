@@ -983,6 +983,30 @@ Path file = ...
 BasicFileAttributes attrs = Files.readAttributes(file, BasicFileAttributes.class);
 ```
 
+
+```java
+public class AttributesUsage {
+    public static void main(String[] args) throws IOException {
+        Path file = Path.of("Attributes.txt");
+        Files.createFile(file);
+        BasicFileAttributes attributes = Files.readAttributes(file, BasicFileAttributes.class);
+        System.out.println("Это обычный файл? " + attributes.isRegularFile());
+        System.out.println("Это директория? " + attributes.isDirectory());
+        System.out.println("Это символическая ссылка? " + attributes.isSymbolicLink());
+        System.out.println("Это не файл, директория или символическая ссылка? " + attributes.isOther());
+        System.out.println("Дата создания файла: " + attributes.creationTime());
+        System.out.println("Размер файла: " + attributes.size());
+        System.out.println("Время последнего доступа: " + attributes.lastAccessTime());
+        System.out.println("Время последнего изменения: " + attributes.lastModifiedTime());
+    }
+}
+```
+
+Атрибуты файла также можно изменять:
+
+- через метод `setTimes​(FileTime  lastModifiedTime, FileTime  lastAccessTime, FileTime  createTime)` интерфейса BasicFileAttributeView. Через этот метод можно заменить только время изменения файла, время его последнего доступа и время создания. Если нужно установить только 1 или 2 из этих значений, в остальные параметры передаётся null.
+- через метод `Files.setAttribute()`. С помощью данного метода можно установить новое значение какого-либо атрибута, передав в метод файл, группу и имя нужного атрибута, и новое значение.
+
 **Базовые атрибуты** (доступны во всех ОС):
 
 + File type
