@@ -1049,14 +1049,18 @@ dosView.setArchive(true);
 
 ## 22. Как создать файл?
 
+Абсолютный путь - путь, который указывает на одно и то же место в файловой системе, независимо от текущего каталога. Например: C:\projects\job4j_exercises\src\main\java\ru\job4j\io\files\file.txt
+
+Относительный путь - путь, указанный относительно текущего каталога. Например: src\main\java\ru\job4j\io\files\file.txt
+
 Четыре способа:
-1. `File file = new File(absoluteFilePath);`
+1. `File file = new File("file.txt");` \\ Теперь объект file хранит путь, который мы в него передали. Физически файл на диске еще не создан.
 
-   `file.createNewFile();`
+   `file.createNewFile();` \\ В следующей строке из объекта типа File создается файл на диске по пути, который хранит объект file
      
-2. `FileOutputStream fos = new FileOutputStream("name.txt");`
+2. `FileOutputStream fos = new FileOutputStream("data/dataresult.txt");`
 
-   `fos.write(fileData.getBytes());`
+   `fos.write("Hello, world!".getBytes());`
   
    `fos.flush();`
   
