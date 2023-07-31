@@ -68,6 +68,8 @@
 
 [34. Какие уровни логирования вы знаете?](#34-Какие-уровни-логирования-вы-знаете)
 
+[35. Какая библиотека для логирования используется в курсе? Как ее настроить?](#35-Какая-библиотека-для-логирования-используется-в-курсе-Как-ее-настроить)
+
 [26. Какие существуют виды потоков ввода/вывода?](#26-Какие-существуют-виды-потоков-ввода/вывода)
 
 [27. Назовите основные предки потоков ввода/вывода.](#27-Назовите-основные-предки-потоков-ввода/вывода)
@@ -1545,6 +1547,73 @@ log4j.appender.console.layout.ConversionPattern=%d{ISO8601} %5p %c:%M:%L - %m%n
 - ALL: уровень, при котором будут записаны все логи из системы.
 
 Получается, что если в приложении в каком-то месте включен уровень логирования INFO, будут логироваться все уровни, начиная с INFO и до FATAL. Если будет уровень логирования FATAL, будут записаны только логи с этим уровнем.
+
+[к оглавлению](#IO)
+
+## 35. Какая библиотека для логирования используется в курсе? Как ее настроить?
+
+В Java есть несколько библиотек для логгирования: Logback, log4j, System.out.println.
+
+Библиотека slf4j позволяет абстрагироваться от конкретных библиотек. Это позволяет придерживаться единого стиля логгирования для проектов.
+
+![image](https://github.com/artemaverin/summary/assets/97846877/5f70cd0a-4579-46e2-af28-0a7efe6a29f7)
+```java
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-log4j12</artifactId>
+    <version>1.7.30</version>
+</dependency>
+```
+
+```java
+package ru.job4j.io;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class UsageLog4j {
+
+    private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
+
+    public static void main(String[] args) {
+        LOG.trace("trace message");
+        LOG.debug("debug message");
+        LOG.info("info message");
+        LOG.warn("warn message");
+        LOG.error("error message");
+    }
+}
+```
+
+Log4j - библиотека позволяет осуществить логирование процессов в приложении.
+
+```java
+<dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.17</version>
+</dependency>
+```
+
+```java
+package ru.job4j.io;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
+public class UsageLog4j {
+
+    private static final Logger LOG = LogManager.getLogger(UsageLog4j.class.getName());
+
+    public static void main(String[] args) {
+        LOG.trace("trace message");
+        LOG.debug("debug message");
+        LOG.info("info message");
+        LOG.warn("warn message");
+        LOG.error("error message");
+    }
+}
+```
 
 [к оглавлению](#IO)
 
