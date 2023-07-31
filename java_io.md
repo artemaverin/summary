@@ -1615,6 +1615,57 @@ public class UsageLog4j {
 }
 ```
 
+log4j properties
+
+```
+log4j.rootLogger=DEBUG, console
+log4j.appender.console=org.apache.log4j.ConsoleAppender
+log4j.appender.console.layout=org.apache.log4j.PatternLayout
+log4j.appender.console.layout.ConversionPattern=%d{ISO8601} %5p %c:%M:%L - %m%n
+```
+
+1. Запись в консоль, файл или базу данных. Log4j позволяет записывать информацию не только в консоль или файл, но так же в базу данных или отправлять по почте. В нашем примере мы используем вывод информации в консоль.
+
+java
+log4j.appender.console=org.apache.log4j.ConsoleAppender
+В разделе JDBC мы добавим конфигурацию для вывода информации в файл. На данном этапе используем только вывод в консоль.
+
+2. Формат записи. В логах удобно получать информацию о времени выполнении в классе и строчке кода, где была сделана запись.
+
+java
+log4j.appender.console.layout=org.apache.log4j.PatternLayout
+log4j.appender.console.layout.ConversionPattern=%d{ISO8601} %5p %c:%M:%L - %m%n
+Разберем вывод.
+
+Дата:
+
+```java
+%d{ISO8601}
+```
+Уровень сообщения:
+
+```java
+%5p
+```
+Класс, метод, строчка:
+
+```java
+%c:%M:%L
+```
+Текст сообщения:
+
+```java
+%m%n
+```
+3. Уровень логирования.
+
+log4j.rootLogger=DEBUG, console
+Чем критичнее сообщение, тем выше должен быть уровень сообщения.
+
+ERROR - критические ошибки.
+
+DEBUG - отладочная информация.
+
 [к оглавлению](#IO)
 
 ## 26. Какие существуют виды потоков ввода/вывода?
