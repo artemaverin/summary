@@ -1741,7 +1741,141 @@ public class Main {
 
 ## 37. Как преобразовать POJO в/из json?
 
+POJO (Plain Old Java Object) — «старый добрый Java-объект», простой Java-объект. Термин впервые начал употребляться Мартином Фаулером и его коллегами как результат поиска способов упрощения разработки. Нет формального определения, какие объекты являются POJO, обычно руководствуются следующими соглашениями для класса:
 
+- не наследуется от других классов (возможно, кроме POJO-классов того же пакета)
+- не реализует интерфейсов (иногда делается исключение для маркерных интерфейсов из стандартной библиотеки, или тех, которые нужны для бизнес-модели),
+- не использует аннотаций в определениях
+- не зависит от сторонних библиотек.
+
+POJO классы:
+**class Person**
+```java
+public class Person {
+
+    private boolean sex;
+
+    private int age;
+
+    private Contact contact;
+
+    private String[] statuses;
+
+    public Person() { }
+
+    public Person(boolean sex, int age, Contact contact, String... statuses) {
+        this.sex = sex;
+        this.age = age;
+        this.contact = contact;
+        this.statuses = statuses;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{"
+                + "sex=" + sex
+                + ", age=" + age
+                + ", contact=" + contact
+                + ", statuses=" + Arrays.toString(statuses)
+                + '}';
+    }
+
+}
+
+```
+
+**класс Contact**
+```java
+public class Contact {
+
+    private String phone;
+
+    public Contact() {
+
+    }
+
+    public Contact(String phone) {
+        this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{"
+                + "phone='" + phone + '\''
+                + '}';
+    }
+}
+```
+
+Объекты классов Person, Contact являются POJO, но для корректного преобразования в строку с помощью org.json к ним ещё необходимо добавить геттеры.
+
+```java
+public static void main(String[] args) {
+    /* JSONObject из json-строки строки */
+    JSONObject jsonContact = new JSONObject("{\"phone\":\"+7(924)111-111-11-11\"}");
+
+    /* JSONArray из ArrayList */
+    List<String> list = new ArrayList<>();
+    list.add("Student");
+    list.add("Free");
+    JSONArray jsonStatuses = new JSONArray(list);
+
+    /* JSONObject напрямую методом put */
+    final Person person = new Person(false, 30, new Contact("11-111"), "Worker", "Married");
+    JSONObject jsonObject = new JSONObject();
+    jsonObject.put("sex", person.getSex());
+    jsonObject.put("age", person.getAge());
+    jsonObject.put("contact", jsonContact);
+    jsonObject.put("statuses", jsonStatuses);
+
+    /* Выведем результат в консоль */
+    System.out.println(jsonObject.toString());
+
+    /* Преобразуем объект person в json-строку */
+    System.out.println(new JSONObject(person).toString());
+}
+```
+
+----------------------------------------------------------------------------------------
+
+Для преобразования POJO (Plain Old Java Object) в JSON и обратно можно использовать библиотеку Gson. Gson позволяет легко преобразовывать Java-объекты в JSON-строки и обратно, используя аннотации и методы.
+
+Пример преобразования POJO в JSON:
+```java
+import com.google.gson.Gson;
+
+public class Person {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // getter and setter methods
+}
+```
+Преобразование POJO в JSON можно выполнить следующим образом:
+
+Импортируйте библиотеку Gson в ваш класс:
+```java
+import com.google.gson.*;
+```
+Создайте экземпляр Gson и передайте его в конструктор:
+```java
+Gson gson = new Gson();
+```
+Преобразуйте ваш объект POJO в строку JSON с помощью метода toJson() объекта Gson:
+```java
+Person person = new Person("John", 25);
+String json = gson.toJson(person); // "{"name":"John","age":25}"
+```
+Преобразуйте строку JSON обратно в объект POJO с помощью метода fromJson():
+```java
+Person newPerson = gson.fromJson(json, Person.class); // new Person("John",25)
+```
+Таким образом, вы можете легко преобразовать объект POJO в и из JSON, используя библиотеку Gson.
 
 [к оглавлению](#IO)
 
