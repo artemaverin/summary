@@ -453,31 +453,31 @@ Java `Scanner` class extends `Object` class and implements `Iterator` and `Close
 + `hasNextInt` 
 + `nextInt` ...
 
-`public boolean hasNext()` - Возвращает true, если у этого сканера есть другой токен на входе.
-`public boolean hasNext(String pattern)` - Возвращает true, если следующий токен соответствует шаблону, созданному из указанной строки.
-`public boolean hasNext(Pattern pattern)` - Возвращает true, если следующий полный токен соответствует указанному шаблону.
+- `public boolean hasNext()` - Возвращает true, если у этого сканера есть другой токен на входе.
+- `public boolean hasNext(String pattern)` - Возвращает true, если следующий токен соответствует шаблону, созданному из указанной строки.
+- `public boolean hasNext(Pattern pattern)` - Возвращает true, если следующий полный токен соответствует указанному шаблону.
 
 и множество вариаций:
 
-`public boolean hasNextLine()` - возвращает логический тип данных, который соответствует новой строке String, которую содержит объект Scanner.
-`public boolean hasNextBoolean()` - проверяет, имеет ли объект логический тип данных в своем буфере.
-`public boolean hasNextByte()` - возвращает значение true, если следующий байт в буфере сканера можно преобразовать в тип данных байта, в противном случае – значение false.
+- `public boolean hasNextLine()` - возвращает логический тип данных, который соответствует новой строке String, которую содержит объект Scanner.
+- `public boolean hasNextBoolean()` - проверяет, имеет ли объект логический тип данных в своем буфере.
+- `public boolean hasNextByte()` - возвращает значение true, если следующий байт в буфере сканера можно преобразовать в тип данных байта, в противном случае – значение false.
 
 и тд
 
-`public String next()` - Находит и возвращает следующий полный токен.
-`public String next(String pattern)` - Возвращает следующий токен, если он соответствует шаблону, созданному из указанной строки.
-`public String next(Pattern pattern)` - Возвращает следующий токен, если он соответствует указанному шаблону.
+- `public String next()` - Находит и возвращает следующий полный токен.
+- `public String next(String pattern)` - Возвращает следующий токен, если он соответствует шаблону, созданному из указанной строки.
+- `public String next(Pattern pattern)` - Возвращает следующий токен, если он соответствует указанному шаблону.
 
 также множество вариаций:
 
-`public String nextLine()` - Перемещает сканер за текущую строку и возвращает пропущенный ввод.
-`public boolean nextBoolean()` - Сканирует следующий токен ввода как логическое значение и возвращает его.
-`public byte nextByte()` - как byte.
+- `public String nextLine()` - Перемещает сканер за текущую строку и возвращает пропущенный ввод.
+- `public boolean nextBoolean()` - Сканирует следующий токен ввода как логическое значение и возвращает его.
+- `public byte nextByte()` - как byte.
 
-`public Scanner useDelimiter(Pattern pattern)` - Устанавливает шаблон ограничения этого сканера в указанный шаблон.
-`public Scanner useDelimiter(String pattern)` - как метод выше, но созданный из указанной строки.
-`public Scanner useRadix(int radix)` - Устанавливает radix равным указанному.
+- `public Scanner useDelimiter(Pattern pattern)` - Устанавливает шаблон ограничения этого сканера в указанный шаблон.
+- `public Scanner useDelimiter(String pattern)` - как метод выше, но созданный из указанной строки.
+- `public Scanner useRadix(int radix)` - Устанавливает radix равным указанному.
 
 https://hr-vector.com/java/class-scanner
 
