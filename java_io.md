@@ -1671,15 +1671,17 @@ log4j.appender.console.layout.ConversionPattern=%d{ISO8601} %5p %c:%M:%L - %m%n
 
 1. Запись в консоль, файл или базу данных. Log4j позволяет записывать информацию не только в консоль или файл, но так же в базу данных или отправлять по почте. В нашем примере мы используем вывод информации в консоль.
 
-java
+```java
 log4j.appender.console=org.apache.log4j.ConsoleAppender
+```
 В разделе JDBC мы добавим конфигурацию для вывода информации в файл. На данном этапе используем только вывод в консоль.
 
 2. Формат записи. В логах удобно получать информацию о времени выполнении в классе и строчке кода, где была сделана запись.
 
-java
+```java
 log4j.appender.console.layout=org.apache.log4j.PatternLayout
 log4j.appender.console.layout.ConversionPattern=%d{ISO8601} %5p %c:%M:%L - %m%n
+```
 Разберем вывод.
 
 Дата:
