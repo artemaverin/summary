@@ -2008,6 +2008,8 @@ public class Main {
 }
 ```
 
+https://job4j.ru/profile/exercise/174/task-view/329
+
 [к оглавлению](#IO)
 
 ## 40. Что такое сериализация / десериализация?
