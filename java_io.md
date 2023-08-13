@@ -1881,6 +1881,8 @@ public static void main(String[] args) {
 }
 ```
 
+https://javarush.com/groups/posts/3970-kofe-breyk-175-kak-mih-mozhem-prochitatjh-fayl-json-v-java-chto-takoe-java-development-kit-jdk
+
 ----------------------------------------------------------------------------------------
 
 Для преобразования POJO (Plain Old Java Object) в JSON и обратно можно использовать библиотеку Gson. Gson позволяет легко преобразовывать Java-объекты в JSON-строки и обратно, используя аннотации и методы.
