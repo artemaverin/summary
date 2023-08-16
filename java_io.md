@@ -835,6 +835,7 @@ String[] filesNames = file.list();
 
 **метод Files.newDirectoryStream()**
 
+Метод newDirectoryStream() возвращает поток, содержащий файлы и директории, находящиеся в директории path (без вложенных). В следующих строках мы получаем этот поток и выводим все его элементы на печать:
 ```java
 DirectoryStream<Path> paths = Files.newDirectoryStream(target);
 paths.forEach(System.out::println);
