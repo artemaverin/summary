@@ -832,6 +832,14 @@ File file = new File("dir");
 File[] filesArr = file.listFiles();
 String[] filesNames = file.list();
 ```
+
+**метод Files.newDirectoryStream()**
+
+```java
+DirectoryStream<Path> paths = Files.newDirectoryStream(target);
+paths.forEach(System.out::println);
+```
+
 + С учетом подпапок
 ```java
 public void listFilesForFolder(final File folder) {
@@ -939,6 +947,13 @@ public class Search {
 _SimpleFileVisitor_ уже реализует FileVisitor, переопределяя все методы только с указанием на дальнейший обход CONTINUE.
 
 Это означает, что унаследовавшись от него мы можем переопределить только нужный нам метод.
+
+3. **метод Files.newDirectoryStream()**
+
+```java
+DirectoryStream<Path> paths = Files.newDirectoryStream(target);
+paths.forEach(System.out::println);
+```
 
 https://habr.com/ru/articles/437694/
  
