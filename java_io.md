@@ -1970,6 +1970,62 @@ String json = gson.toJson(person); // "{"name":"John","age":25}"
 Person newPerson = gson.fromJson(json, Person.class); // new Person("John",25)
 ```
 Таким образом, вы можете легко преобразовать объект POJO в и из JSON, используя библиотеку Gson.
+- ----------------------------------------------
+
+библиотека Jackson
+
+**Преобразовать объект в JSON**
+
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+
+public class Main {
+    public static void main(String[] args){
+        ObjectMapper mapper = new ObjectMapper();
+
+        Animal animal = new Animal();
+        animal.setName("cat");
+
+        try {
+            // Java объект в JSON файл
+            mapper.writeValue(new File("/home/myuser/animals.json"), animal);
+
+            // Java объект в JSON строку
+            String jsonString = mapper.writeValueAsString(animal);
+            System.out.println(jsonString);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+}
+```
+
+**Преобразовать объект из JSON**
+
+```java
+public class FromJSON {
+    public static void main(String[] args){
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            // Java объект из JSON файла
+            Animal animal = mapper.readValue(new File("/home/alex/animals.json"), Animal.class);
+
+            // Java объект из JSON файла по URL (если данный файл доступен по указанному URL)
+            // Animal animalFromWeb = mapper.readValue(new URL("http://example.com/api/animals.json"), Animal.class);
+
+            // Java объект из JSON строки
+            Animal animalFromString = mapper.readValue("{\"name\" : \"dog\"}", Animal.class);
+
+            System.out.println("Name of animal from JSON file: "+animal.getName());
+            System.out.println("Name of animal from JSON string: "+animalFromString.getName());
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+}
+```
 
 [к оглавлению](#IO)
 
