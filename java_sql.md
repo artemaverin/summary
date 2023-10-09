@@ -448,8 +448,7 @@ BEGIN;
 DECLARE
     cursor_products cursor for
                         select * from products;
-- _________________________________________________
-- 
+= =========================================================== 
 FETCH [FORWARD | BACKWARD]
     [direction (rows)]
     FROM [cursor_name];
@@ -457,14 +456,14 @@ FETCH [FORWARD | BACKWARD]
 
 FETCH NEXT FROM cursor_products;
 FETCH 10 FROM cursor_products;
--_________________________________________________
+= =========================================================== 
 
 MOVE [FORWARD | BACKWARD]
     [direction (rows)]
     FROM [cursor_name];
 
 MOVE FORWARD 2 FROM cursor_products;
--_________________________________________________
+= =========================================================== 
 
 CLOSE cursor_name;
 
