@@ -450,6 +450,7 @@ DECLARE
                         select * from products;
 
 ============================================================ 
+
 FETCH [FORWARD | BACKWARD]
     [direction (rows)]
     FROM [cursor_name];
