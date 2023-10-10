@@ -787,6 +787,7 @@ https://job4j.ru/profile/exercise/179/task-view/787
 
 3. Ограниченность возможностей. Мы уже говорили, что представления можно использовать для модификации данных. Однако это имеет много ограничений, поэтому можно утверждать, что не любую операцию с БД можно выполнить с помощью представлений.
 
+Создание представления
 ```
 create view имя_представления as запрос_select
 ```
@@ -798,4 +799,21 @@ create view show_students_with_2_or_more_books
          join books b on o.book_id = b.id
          join authors a on b.author_id = a.id
          group by (s.name, a.name) having count(a.name) >= 2;
+```
+
+Вызов представления
+```
+select * from show_students_with_2_or_more_books;
+```
+
+изменить представление
+
+```
+alter view старое_имя rename to новое_имя
+```
+
+Удалить представление
+
+```
+drop view имя_представления
 ```
