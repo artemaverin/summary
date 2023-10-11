@@ -56,6 +56,8 @@
 
 [28. Можно ли использовать возвращаемое значение execute() для проверки, что что-то обновилось?](#28-Можно-ли-использовать-возвращаемое-значение-execute-для-проверки-что-что-то-обновилось)
 
+[29. Как получить при вставке сгенерированные ключи? Как это сделать на чистом sql?](#29-Как-получить-при-вставке-сгенерированные-ключи-Как-это-сделать-на-чистом-sql)
+
 ## 1. Что такое SQL?
 SQL - это декларативный язык программирования, который используется для создания, модификации и управления данными в реляционной БД, управляемой системой управления базами данных (СУБД). С помощью SQL-запросов можно добавлять, изменять, получать или удалять данные из БД.
 
@@ -991,4 +993,43 @@ statement.execute(sql);
 ResultSet result = statement.getResultSet();
 /* эквивалентно */
 ResultSet result = statement.executeQuery(sql);
+```
+
+## 29. Как получить при вставке сгенерированные ключи? Как это сделать на чистом sql?
+
+https://job4j.ru/profile/exercise/55/task-view/346
+
+Получение id вставленного элемента
+
+Чаще всего id поддерживается на уровне БД. Что если нам нужно получить какое id сгенерировала БД для нашей записи? В первую очередь может встать вопрос, а зачем это нужно? В сложных системах, где множество связей между сущностями, иногда бывает нужным использовать этот id, чтобы, например обновить другую таблицу или еще как-то. Более подробно вы с этим познакомитесь на уровне middle.
+
+Давайте рассмотрим, как можно получить этот id
+
+1.  На чистом SQL. В SQL есть ключевое слово RETURNING(поля), которое мы можем использовать в запросе. В итоге запрос вставки будет выглядеть так:
+
+```
+INSERT INTO cities(name, population) VALUES ('Ufa', 1000000) RETURNING (id);
+```
+
+2. С использованием JDBC. Для того чтобы получить id. Нужно при создании PreparedStatement вторым аргументом передать Statement.RETURN_GENERATED_KEYS. После как обычно выполнить запрос. Наконец, чтобы получить ключ нужно вызвать метод getGeneratedKeys(). Давайте перепишем метод insert, так чтобы он возвращал переданный city, только уже с проставленным id из БД.
+
+```
+java
+public City insert(City city) {
+    try (PreparedStatement statement =
+                 connection.prepareStatement("INSERT INTO cities(name, population) VALUES (?, ?)",
+                         Statement.RETURN_GENERATED_KEYS)) {
+        statement.setString(1, city.getName());
+        statement.setInt(2, city.getPopulation());
+        statement.execute();
+        try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                city.setId(generatedKeys.getInt(1));
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return city;
+}
 ```
