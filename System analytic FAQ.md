@@ -90,13 +90,13 @@
 
 ## 4. Критерии требований
 
-Полнота 
-Осуществимость 
-Необходимость 
-Конкретность 
-Приоритезированность 
-Недвусмысленность 
-Проверяемость
+-Полнота 
+- Осуществимость 
+- Необходимость 
+- Конкретность 
+- Приоритезированность 
+- Недвусмысленность 
+- Проверяемость
 
 [к оглавлению](#Требования)
 
@@ -147,12 +147,16 @@ _Use case_ — как этот продукт должен работать. Э�
 
 - `Блок-схема` (в основном под алгоритмы)
 https://docs.google.com/document/d/1dlwJd1brdHCSWWIMCyAWzrPKZ3eyzjMc9aS_m5cdzDk/edit
+
 - `EPC` (Event-Driven Process Chain — событийная цепочка процессов) используется для описания процессов нижнего уровня
 https://docs.google.com/document/d/1TTGRTWtWcc9Hs2ZwIkFIqIYEerlDFbNGdjk8znBS5Z0/edit
+
 - `UML`
 https://docs.google.com/document/d/1ivrj7yAg3Bx4DQsdlDzvrk3ilmhx5esdMFk_ki5LjgQ/edit#heading=h.ybfk4ofsso
+
 - `BPMN 2.0`
 https://docs.google.com/document/d/15oM59LZxiZq_nFDKLcPg2ljNUB7OzGa5uo2eK5aeLCQ/edit#heading=h.5r0o6fbrkp7z
+
 - `Семейство IDEF`
 https://docs.google.com/document/d/1oaDJ4sPnH6VdI7p2wYGgxsW9akaHV-JLat0xVf3Hw2Y/edit#heading=h.noe8as5cv3kr
 
@@ -222,7 +226,6 @@ https://docs.google.com/document/d/128AjQPa56f09OExebYQNxCHsvdsy7C9lmUTvOgKOqCo/
 
 ## 10. Составьте схему BPMN для процесса, описывающего работу банкомата
 
-https://modeler.cloud.camunda.io/share/047ce2b5-dfbd-4776-85a8-856bc9647dbc
 ![new-bpmn-diagram (1)](https://github.com/artemaverin/summary/assets/97846877/cfe6d5a9-2f07-4ea3-b5ca-eca8c9cb1a0e)
 
 ## 6. Чем Kanban отличается от Scrum?
