@@ -247,6 +247,8 @@ https://docs.google.com/document/d/128AjQPa56f09OExebYQNxCHsvdsy7C9lmUTvOgKOqCo/
 
 ![image](https://github.com/artemaverin/summary/assets/97846877/d2c17f60-e803-4c73-9203-bde3a8b23709)
 
+[к оглавлению](#Нотации-UML-и-BPMN)
+
 ## 13. Какие элементы BPMN вы знаете?
 
 Алфавит нотации BPMN включает следующие элементы:
@@ -276,6 +278,8 @@ https://docs.google.com/document/d/128AjQPa56f09OExebYQNxCHsvdsy7C9lmUTvOgKOqCo/
 - соединяющие элементы (потоки управления, потоки сообщений и ассоциации);
 - зоны ответственности (пулы и дорожки);
 - артефакты (сноски)
+
+[к оглавлению](#Нотации-UML-и-BPMN)
 
 # SQL и базы данных
 
