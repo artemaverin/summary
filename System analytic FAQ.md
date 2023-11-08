@@ -892,13 +892,13 @@ https://ru.hostings.info/schools/kody-vseh-oshibok.html#:~:text=200%20OK.%20Се
 
 Пример запроса:
 
-`
-GET /api/v1/books?title=harry%20potter HTTP/1.1
+
+```GET /api/v1/books?title=harry%20potter HTTP/1.1
 Host: mylibrary.com
 Accept: application/json
 `
-Пример ответа:
-`
+Пример ответа:```
+
 [
   {
     "id": 1,
