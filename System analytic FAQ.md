@@ -893,13 +893,16 @@ https://ru.hostings.info/schools/kody-vseh-oshibok.html#:~:text=200%20OK.%20Се
 Пример запроса:
 
 
-```GET /api/v1/books?title=harry%20potter HTTP/1.1
+```java
+GET /api/v1/books?title=harry%20potter HTTP/1.1
 Host: mylibrary.com
-Accept: application/json```
+Accept: application/json
+```
 
 Пример ответа:
 
-```[
+```java
+[
   {
     "id": 1,
     "title": "Harry Potter and the Sorcerer's Stone",
@@ -912,11 +915,12 @@ Accept: application/json```
     "id": 2,
     ...
   }
-]```
+]
+```
 Этот API позволяет пользователю искать книги по их заголовкам. В ответе мы видим список объектов, каждый из которых представляет одну книгу. Каждый объект содержит свойства, такие как идентификатор книги (id), название, автор, жанр, количество страниц и дата публикации.
 
 Эндопоинты:
-`
+
 /books: Получить список книг
 /books/{id}: Получить информацию о книге по ее ID
 /authors: Получить список авторов
@@ -932,7 +936,7 @@ Accept: application/json```
 /genre/create: Создать новый жанр
 /book/borrow: Взять книгу на выдачу
 /book/return: Вернуть книгу
-`
+
 
 ## 6. Чем Kanban отличается от Scrum?
 
