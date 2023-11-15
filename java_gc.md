@@ -54,6 +54,9 @@
 
 Т.е. в отличие от С++ нет явной необходимости уничтожать объект.
 
+![image](https://github.com/artemaverin/summary/assets/97846877/6b722446-92bb-4525-9e74-b6cce2db05ed)
+
+
 [к оглавлению](#Garbage-Collection)
 
 ## 2. Что такое менеджер памяти?
