@@ -172,6 +172,18 @@ https://job4j.ru/profile/exercise/58/task-view/369
 
 ## 5. Какие алгоритмы сборщика вы знаете?
 
+Виды сборщиков:
+
+· Serial GC
+
+· Parallel GC
+
+· Concurrent Mark Sweep (CMS)
+
+· Garbage-First (G1)
+
+· Z Garbage Collector (ZGC)
+
 https://job4j.ru/profile/exercise/59/task-view/371
 
 Для сборки мусора используется алгоритм пометок (Mark & Sweep). Этот алгоритм состоит из трех этапов:
