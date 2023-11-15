@@ -1175,6 +1175,8 @@ HotSpot Virtual Machine Garbage Collection Tuning Guide https://docs.oracle.com/
 
 **Типы ссылок в Java** 
 
+Избавляемся от мусора в Java - https://habr.com/ru/companies/otus/articles/553996/
+
 "Ссылка (Java)" http://cyclowiki.org/wiki/%D0%A1%D1%81%D1%8B%D0%BB%D0%BA%D0%B0_(Java)#targetText=%D0%A1%D1%81%D1%8B%D0%BB%D0%BA%D0%B8%20%D0%B2%20Java%20%E2%80%94%20%D1%83%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8%20%D0%BD%D0%B0,%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%8F%D0%B2%D0%BB%D1%8F%D0%B5%D1%82%D1%81%D1%8F%20%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%D0%BC%20%D0%BF%D0%BE%20%D1%83%D0%BC%D0%BE%D0%BB%D1%87%D0%B0%D0%BD%D0%B8%D1%8E).
 
 "Difference between WeakReference vs SoftReference vs PhantomReference vs Strong reference in Java" https://javarevisited.blogspot.com/2014/03/difference-between-weakreference-vs-softreference-phantom-strong-reference-java.html
