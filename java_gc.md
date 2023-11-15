@@ -119,6 +119,8 @@ https://job4j.ru/profile/exercise/58/task-view/369
 
 ![image](https://github.com/artemaverin/summary/assets/97846877/cd7ad861-6d2a-4091-8ae3-40accc6d4c96)
 
+![image](https://github.com/artemaverin/summary/assets/97846877/2283348d-a8f1-4634-bc55-22939361788d)
+
 
 [к оглавлению](#Garbage-Collection)
 
