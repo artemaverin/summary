@@ -503,6 +503,8 @@ jconsole, visualvm и yourkit profiler предоставляют удобный
 + `clear` — очищает ссылку.
 + `isEnqueued` и `enqueue`, отвечающие за взаимодействие ссылки и объекта `ReferenceQueue`.
 
+Все типы ссылок, за исключением сильных, в Java являются наследниками класса Reference. 
+
 [к оглавлению](#Garbage-Collection)
 
 ## 9. Какие типы ссылок вы знаете?
