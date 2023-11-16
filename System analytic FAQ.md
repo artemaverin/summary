@@ -1267,10 +1267,24 @@ Agile + Scrum - в первую очередь это гибкий подход,
 
 
 Agile + Kanban
+
+https://docs.google.com/document/d/1H8RLLfcZt6HNvU0i0OpsvqHj13UW2dHrXTLdOGFIIBQ/edit#heading=h.g8mzpz7d0izp
+
 В отличии от Scrum, команда разбивает рабочие процессы не по времени, а по этапам:
 - «В плане»
 - «В работе»
 - «Готово»
+
+Важный элемент - доска:
+
+![image](https://github.com/artemaverin/summary/assets/97846877/90bd14f0-fd1a-4938-a0e9-75efde7dd5c5)
+
+![image](https://github.com/artemaverin/summary/assets/97846877/e42c660d-66c9-49af-8fb7-b0324b30ac0f)
+
+![image](https://github.com/artemaverin/summary/assets/97846877/3863e7dd-4c5b-468e-b293-094642892c23)
+
+![image](https://github.com/artemaverin/summary/assets/97846877/b81c6ecf-1e95-4803-b643-49287b0f37bd)
+
 
 [к оглавлению](#Методологии-разработки-ПО)
 
