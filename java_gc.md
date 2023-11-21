@@ -961,6 +961,15 @@ public class TestObject implements Cloneable {
 
 Для того, чтобы корректно скопировать объект полностью при наличии в нем полей, хранящих ссылочные типы данных, нужно применить глубокое копирование (Deep copy). Глубокое копирование создает клон, полностью независимый от исходного объекта, то есть изменения в скопированном объекте не повлияют на исходный объект.
 
+```java
+@Override
+protected TestObject clone() throws CloneNotSupportedException {
+    TestObject testObj = (TestObject) super.clone();
+    testObj.innerObj = innerObj.clone();
+    return testObj;
+}
+```
+
 При глубоком копировании нужно выполнить следующие условия:
 
 - Поля, хранящие примитивные типы данные, не нуждаются в отдельном копировании.
