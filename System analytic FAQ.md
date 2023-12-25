@@ -866,9 +866,11 @@ REST:
 
 https://skillbox.ru/media/code/rest-api-chto-eto-takoe-i-kak-rabotaet/
 
+https://docs.google.com/document/d/1lXadqw0FNfdAZqxQfSdYCZH_TraMWpZ8paFtvEOcUEk/edit
+
 https://www.youtube.com/watch?v=XaTwnKLQi4A
 
-
+REST API отвечает почти за все взаимодействия между серверными и клиентскими приложениями .Если проще, то REST API — это когда серверное приложение дает доступ к своим данным клиентскому приложению по определенному URL. Далее разберем подробнее, начиная с базовых понятий.
 
 REST и SOAP на самом деле не сопоставимы. REST — это архитектурный стиль. SOAP — это формат обмена сообщениями. Давайте сравним популярные реализации стилей REST и SOAP.
 
