@@ -372,6 +372,7 @@ git config --global rerere.enabled true
 
 ![image](https://github.com/artemaverin/summary/assets/97846877/54f4eadb-fc84-4eff-a7c1-7f7ae4ae79d8)
 
+https://stackoverflow.com/questions/59441589/how-is-repository-different-from-workspace
 
 https://docs.github.com/ru
 
