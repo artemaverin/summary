@@ -368,6 +368,14 @@ git config --global rerere.enabled true
 
 Для отмены автоматического устранения конфликта используйте git checkout --conflict=merge таким образом вы отмените авто устранение конфликта и вернёте файл(ы) в состояние конфликта для ручного устранения.
 
+## Прочее
+
+![image](https://github.com/artemaverin/summary/assets/97846877/54f4eadb-fc84-4eff-a7c1-7f7ae4ae79d8)
+
+
+https://docs.github.com/ru
+
+https://git-scm.com/book/ru/v2
 
 ## Вопросы:
 
