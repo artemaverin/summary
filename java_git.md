@@ -505,6 +505,7 @@ git stash
 - -------------------------
 
 **Настройка**
+
 git config --global user.name "Artem Averin"
 
 git config --global user.nemail "artem@mail.ru"
@@ -558,3 +559,24 @@ git branch -r  - список всех веток в удаленном репо
 git branch [имя ветки] - создание новой ветки
 
 git checkout [имя ветки] - переключает на данную локальную ветку
+
+**слияние**
+
+git checkout [имя ветки в которую мы хотим слить изменения]
+
+git merge [имя ветки из которой берем изменения] - производит слияние веток
+
+![image](https://github.com/artemaverin/summary/assets/97846877/3edebe82-4bf2-4e51-b2b5-729e3ddaf30b)
+
+итог merge можно посмотреть в git log
+
+далее нужно сделать push в удаленный репозиторий
+
+_**2 способ**_:
+
+git checkout [имя ветки в которую мы хотим слить изменения]
+
+git rebase [имя ветки из которой хотим перенести] - переносит все изменения со всей историей
+
+![image](https://github.com/artemaverin/summary/assets/97846877/cd3aa0ac-68a8-4c94-a794-6927331badbd)
+
