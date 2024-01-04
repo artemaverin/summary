@@ -580,3 +580,19 @@ git rebase [имя ветки из которой хотим перенести]
 
 ![image](https://github.com/artemaverin/summary/assets/97846877/cd3aa0ac-68a8-4c94-a794-6927331badbd)
 
+**Pull/Merge request**
+
+Pull/Merge request - запрос на слияние из вашей feature ветки в в любую другую ветку
+
+![image](https://github.com/artemaverin/summary/assets/97846877/8d57547b-d186-48a0-bfbf-39cdfdca5638)
+
+![image](https://github.com/artemaverin/summary/assets/97846877/fcf8cf6e-da43-4077-bafb-9c21face85e5)
+
+**cherry-pick**
+
+![image](https://github.com/artemaverin/summary/assets/97846877/035dc6ff-3347-425b-ba98-da8bd4a7de56)
+
+git cherry-pick [хэш нужного комита] — это полезная команда, с помощью которой можно выборочно применить коммиты Git к текущей рабочей ветке HEAD. С ее помощью можно выбрать коммит из одной ветки и применить его к другой.
+
+
+
