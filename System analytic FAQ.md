@@ -191,6 +191,7 @@ https://docs.google.com/document/d/1o14Awt6zWGqMeYpLvbAMic2bDJn4d_2qVID-3B6-zJs/
 - Приоритезированность 
 - Недвусмысленность 
 - Проверяемость
+- достижимость
 
 [к оглавлению](#Требования)
 
