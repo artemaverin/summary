@@ -201,6 +201,9 @@ public Man(Cat cat) {
 }
 ```
 
+![image](https://github.com/artemaverin/summary/assets/97846877/88a3aebe-f54e-4e98-8610-096cf370020e)
+
+
 [к оглавлению](#Spring-Core)
 
 ## 6. Что такое ApplicationContext? Когда он создается?
