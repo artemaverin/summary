@@ -1517,3 +1517,6 @@ TCP - это протокол, который обеспечивает наде�
 ![image](https://github.com/artemaverin/summary/assets/97846877/6205242c-725f-4c2d-bef3-512bf866a820)
 
 [к оглавлению](#Прочие-вопросы)
+
+![image](https://github.com/artemaverin/summary/assets/97846877/0a908b89-afc2-489d-af61-c58999bc8a5d)
+
