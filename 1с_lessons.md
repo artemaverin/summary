@@ -15,3 +15,10 @@
 
 Все простые типы 1с\
 <img width="314" height="140" alt="image" src="https://github.com/user-attachments/assets/f3a5872a-b014-4ba0-8f66-219801e6fa55" />
+
+В основном все переменные объектных типов
+
+Процедуры\
+<img width="439" height="375" alt="image" src="https://github.com/user-attachments/assets/c962b27c-8dfc-4d58-b170-81694ab4ba7b" />
+
+Функции\
