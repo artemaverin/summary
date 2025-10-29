@@ -13,3 +13,5 @@
   + Обычный 
   + управляемый
 
+Все простые типы 1с\
+<img width="314" height="140" alt="image" src="https://github.com/user-attachments/assets/f3a5872a-b014-4ba0-8f66-219801e6fa55" />
